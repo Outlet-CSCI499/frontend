@@ -6,7 +6,8 @@ import { Switch, Route } from "react-router-dom";
 import {
   HomePageContainer,
   NewsFeedContainer,
-  NewsArticleContainer
+  NewsArticleContainer,
+  SignUpContainer
 } from './components/containers';
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/feed" component={NewsFeedContainer} />
         <Route exact path ="article_no" component={NewsArticleContainer} />
+        <Route exact path="/signup" component={SignUpContainer} />
       </Switch>
     </div>
   );

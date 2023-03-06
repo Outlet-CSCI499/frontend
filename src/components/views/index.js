@@ -3,3 +3,4 @@
 export { default as HomePageView } from "./HomePageView";
 export { default as NewsFeedView } from "./NewsFeedView";
 export { default as NewsArticleView } from "./NewsArticleView";
+export { default as SignUpView } from "./SignUpView";
