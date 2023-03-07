@@ -12,7 +12,7 @@ import {
 } from './components/containers';
 
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Switch>
