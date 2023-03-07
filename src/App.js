@@ -7,7 +7,8 @@ import {
   HomePageContainer,
   NewsFeedContainer,
   NewsArticleContainer,
-  SignUpContainer
+  SignUpContainer,
+  LoginContainer
 } from './components/containers';
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/feed" component={NewsFeedContainer} />
         <Route exact path ="article_no" component={NewsArticleContainer} />
         <Route exact path="/signup" component={SignUpContainer} />
+        <Route exact path="/login" component={LoginContainer} />
       </Switch>
     </div>
   );

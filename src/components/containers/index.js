@@ -4,3 +4,4 @@ export { default as HomePageContainer } from "./HomePageContainer";
 export { default as NewsFeedContainer } from "./NewsFeedContainer";
 export { default as NewsArticleContainer } from "./NewsArticleContainer";
 export { default as SignUpContainer } from "./SignUpContainer";
+export { default as LoginContainer } from "./LoginContainer";
