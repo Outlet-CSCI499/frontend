@@ -9,7 +9,18 @@
         font-weight: 400;
 
         &::before {
-            
+            content: '<h1>';
+            font-family: 'Helvetica Neue';
+            color: #aaddff;
+            font-size: 18px;
+            position: absolute;
+            margin-top: -40px;
+            left: 15px;
+            opacity: 0.6;
+        }
+
+        &::after {
+            content: '</h1>';
         }
 
         img {
