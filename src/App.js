@@ -1,28 +1,21 @@
 
-import './App.css';
+import './App.scss';
 
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import {
-  HomePageContainer,
-  NewsFeedContainer,
-  NewsArticleContainer,
-  SignUpContainer,
-  LoginContainer
-} from './components/containers';
+import Layout from './components/Layout'
+import Home from './components/Home'
 
 
 const App = () => {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={HomePageContainer} />
-        <Route exact path="/feed" component={NewsFeedContainer} />
-        <Route exact path ="article/:id" component={NewsArticleContainer} />
-        <Route exact path="/signup" component={SignUpContainer} />
-        <Route exact path="/login" component={LoginContainer} />
-      </Switch>
-    </div>
+    <>
+      <Routes>
+        <Route exact path="/" element={<Layout />}> 
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

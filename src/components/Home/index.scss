@@ -1,0 +1,25 @@
+.home-page {
+
+    h1 {
+        color: #fff;
+        font-size: 53px;
+        margin: 60px 60px;
+        bottom: 30px;
+        font-family: 'Coolvetica';
+        font-weight: 400;
+
+        &::before {
+            
+        }
+
+        img {
+            width: 32px;
+            left: 10%;
+            top: 50%;
+            transform: translateY(15%);
+            width: 10%;
+            max-height: 90%;
+
+        }
+    }
+}
