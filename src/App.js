@@ -7,7 +7,7 @@ import Layout from './components/Layout'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-
+import NewsPage from './components/NewsPage';
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/newspage" element={<NewsPage />} />
         </Route>
       </Routes>
     </>

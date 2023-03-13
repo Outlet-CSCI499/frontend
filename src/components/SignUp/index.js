@@ -17,8 +17,8 @@ const SignUp = () => {
                     <input type="password" className='passwordBox'></input><br/>
                     <label style={{ fontSize: 15 }}>Confirm Password</label><br/>
                     <input type="password" className='passwordBox'></input><br/>
-                    <input className='signUpButton' type="button" value='Sign Up'></input>
-                    <p style={{fontSize: 15}}>Already have an account? <Link style={{fontSize: 15}} to='/Login'>Login</Link></p>
+                    <input className='signUpButton' type="button" value='Create Account'></input>
+                    <p className='loginText' style={{fontSize: 15}}>Already have an account? <Link style={{fontSize: 15}} to='/Login'>Login</Link></p>
                    </div>
                 </div>
             </div>

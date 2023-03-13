@@ -18,7 +18,7 @@ const Login = () => {
                     <input className='rememberMe' type="checkbox" id='rememberMe'></input>
                     <label style={{ fontSize: 15 }} for='rememberMe'>Remember Me</label><br/>
                     <input className='signInButton'type="button" value='Sign in'></input>
-                    <p style={{fontSize: 15}}>Already have an account? <Link style={{fontSize: 15}} to='/SignUp'>SignUp</Link></p>
+                    <p className='signUpText'style={{fontSize: 15}}>Don't have an account? <Link style={{fontSize: 15}} to='/SignUp'>Sign Up</Link></p>
                    </div>
                 </div>
             </div>
