@@ -1,15 +1,150 @@
-.barButton {
-    margin-top: 80px;
-    margin-left: 80px;
-    height: 4rem;
-    width: 70rem;
-    background-color: white;
-    border-radius: 50px;
+.newsContainer h1 {
+  font-size: 40px;
+  margin-top: 60px;
+  margin-left: 8rem;
 }
 
-.recentButon {
+.top-articles {
+  background-color: white;
+  height: 5rem;
+  width: 30rem;
+  border-radius: 20px;
+  margin-left: 100rem;
+}
+.top-articles h2 {
+  text-align: center;
+  font-size: 25px;
+  color: black;
+  padding-top: 10px;
+}
+
+.recent {
+  display: grid;
+  align-items: center;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  height: 3rem;
+  width: 10rem;
+  font-size: 20px;
+}
+
+.barButton {
+  margin-top: 20px;
+  margin-left: 80px;
+  height: 5rem;
+  width: 90rem;
+  background-color: white;
+  border-radius: 50px;
+}
+
+.headerBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 8rem;
+  width: 93.5%;
+}
+
+.headerFilter {
+  width: 60%;
+  height: 6rem;
+  border-radius: 3rem;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+
+  & input {
+    &:nth-child(1) {
+      margin-left: 2rem;
+    }
+    &[type="text"] {
+      color: black;
+      background-color: #aeaeae;
+      padding: 0.75rem 2rem;
+      margin-left: auto;
+      margin-right: 2rem;
+      width: 35%;
+    }
+    &[type="button"] {
+      width: 20rem;
+    }
+    color: white;
+    background-color: black;
+    font-size: 2.5rem;
+    padding: 0.75rem 3rem;
+    border-radius: 3rem;
+  }
+}
+
+.headerTopComments {
+  width: 20%;
+  height: 6rem;
+  border-radius: 3rem;
+  background-color: #d9d9d9;
+  display: grid;
+  place-content: center;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 3.5rem;
+}
+
+.newsBox {
+  & div {
+    background-color: #d9d9d9;
+    border-radius: 3rem;
+    text-align: center;
     display: grid;
     align-items: center;
-    background-color: #A2E4B8;
-    border-radius: 20px;
+    font-size: 5rem;
+    color: black;
+  }
+  margin-top: 4rem;
+  margin-left: 8rem;
+  display: grid;
+  width: 56%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 10vw 10vw 10vw;
+  grid-auto-rows: 3em;
+  grid-gap: 1.75vw;
+}
+
+.pageBar {
+  margin-top: 4rem;
+  margin-left: 8rem;
+  background-color: #d9d9d9;
+  height: 6rem;
+  width: 56%;
+  border-radius: 3rem;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.articleHover:hover .image {
+  opacity: 0.3;
+}
+
+.articleHover:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+.articleHover {
+  position: relative;
+  width: 100%;
 }
