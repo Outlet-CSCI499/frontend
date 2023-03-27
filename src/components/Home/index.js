@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <div className="heading">
         <h1>Welcome to</h1>
-        <img src={LogoTitle} height={500} width={800}></img>
+        <img src={LogoTitle}></img>
       </div>
       <div className="registration">
         <input
@@ -22,6 +22,12 @@ const Home = () => {
           className="signButton"
           value={"Sign Up"}
           onClick={() => navigate("/SignUp")}
+        ></input>
+        <input
+          type="button"
+          className="newsButton"
+          value={"News"}
+          onClick={() => navigate("/NewsPage")}
         ></input>
       </div>
     </>

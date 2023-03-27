@@ -1,11 +1,14 @@
 .heading {
   font-size: 8rem;
   text-align: center;
+  user-select: none;
 }
 .heading img {
   margin-top: -15rem;
   height: 30rem;
   width: 50rem;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .registration {
@@ -17,13 +20,20 @@
   font-size: 6rem;
   background-color: #d6d6d6;
   border-radius: 2rem;
-  margin: 3rem;
+  margin: 4rem;
 }
 
 .signButton {
   font-size: 6rem;
   background-color: #d6d6d6;
   border-radius: 2rem;
+}
+
+.newsButton {
+  font-size: 6rem;
+  background-color: #d6d6d6;
+  border-radius: 2rem;
+  margin: 4rem;
 }
 
 // .home-page {
