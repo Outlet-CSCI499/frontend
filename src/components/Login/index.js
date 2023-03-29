@@ -1,15 +1,41 @@
 import "./index.scss";
 import LogoTitle from "../../assets/images/logo-o.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-
+  const navigate = useNavigate();
   const checkBoxHandler = (box) => {
     setRememberMe(box.target.checked);
+  };
+
+  const handleLogin = async () => {
+    const login = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        return data;
+      });
+
+    console.log(login);
+
+    if (login.hasOwnProperty("user")) {
+      console.log("success");
+      navigate("/posts");
+    } else {
+      console.log("failed");
+    }
   };
 
   return (
@@ -49,7 +75,7 @@ const Login = () => {
               className="signInButton"
               type="button"
               value="Sign in"
-              onClick={() => console.log(email, password, rememberMe)}
+              onClick={() => handleLogin()}
             ></input>
             <p className="signUpText" style={{ fontSize: 15 }}>
               Don't have an account?{" "}

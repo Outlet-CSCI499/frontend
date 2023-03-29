@@ -1,18 +1,45 @@
 import "./index.scss";
 import LogoTitle from "../../assets/images/logo-o.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (password !== confirmPassword) {
       alert("Passwords do not match");
     } else if (password === confirmPassword) {
-      alert("Success");
+      const signup = await fetch("http://localhost:3001/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          username: username,
+          first_name: firstName,
+          password: password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          return data;
+        });
+
+      console.log(signup);
+
+      if (signup.hasOwnProperty("user")) {
+        console.log("success");
+        navigate("/login");
+      } else {
+        console.log("failed");
+      }
     }
   };
 
@@ -28,6 +55,22 @@ const SignUp = () => {
               type="email"
               className="emailBox"
               onChange={(email) => setEmail(email.target.value)}
+            ></input>
+            <br />
+            <label style={{ fontSize: 15 }}>Username</label>
+            <br />
+            <input
+              type="text"
+              className="emailBox"
+              onChange={(username) => setUsername(username.target.value)}
+            ></input>
+            <br />
+            <label style={{ fontSize: 15 }}>First Name</label>
+            <br />
+            <input
+              type="text"
+              className="emailBox"
+              onChange={(firstName) => setFirstName(firstName.target.value)}
             ></input>
             <br />
             <label style={{ fontSize: 15 }}>Password</label>
