@@ -8,10 +8,15 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import NewsPage from "./components/NewsPage";
 import Posts from "./components/Posts";
+import { MantineProvider, Text } from "@mantine/core";
 
 const App = () => {
   return (
-    <>
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{ colorScheme: "dark" }}
+    >
       <Routes>
         <Route exact path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -21,7 +26,7 @@ const App = () => {
           <Route path="/posts" element={<Posts />} />
         </Route>
       </Routes>
-    </>
+    </MantineProvider>
   );
 };
 

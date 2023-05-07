@@ -1,9 +1,23 @@
 import "./index.scss";
-import LogoTitle from "../../assets/images/logo-outlet1.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {
+  SegmentedControl,
+  TextInput,
+  Center,
+  Box,
+  SimpleGrid,
+  Pagination,
+} from "@mantine/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faClockRotateLeft,
+  faArrowUpLong,
+} from "@fortawesome/free-solid-svg-icons";
 
 const NewsPage = () => {
+  const [filter, setFilter] = useState("recent");
   const [recent, setRecent] = useState(false);
   const [topRated, setTopRated] = useState(false);
   const [text, setText] = useState(false);
@@ -11,82 +25,64 @@ const NewsPage = () => {
   return (
     <>
       <div className="newsContainer">
-        <h1>Related News</h1>
-        <div className="headerBar">
-          <div className="headerFilter">
-            <input
-              type="button"
-              value="Recent"
-              onClick={(recent) => setRecent(recent.target.value)}
-            ></input>
-            <input
-              type="button"
-              value="Top Rated"
-              onClick={(topRated) => setTopRated(topRated.target.value)}
-            ></input>
-            <input
-              type="button"
-              value="Text"
-              onClick={(text) => setText(text.target.value)}
-            ></input>
-            <input type="text" placeholder="Search Keywords"></input>
+        <div className="news">
+          <div className="newsTitle">
+            <h1>Related News</h1>
           </div>
-          <div className="headerTopComments">
-            <h2>Top Article Comments</h2>
-            <div className="userComments">
-              {/* Create Box + Boxes for comments */}
+          <div className="newsTiles">
+            <div className="newsFilter">
+              <SegmentedControl
+                value={filter}
+                onChange={setFilter}
+                data={[
+                  {
+                    label: (
+                      <Center>
+                        <FontAwesomeIcon icon={faClockRotateLeft} size="l" />
+                        <Box ml={10}>Recent</Box>
+                      </Center>
+                    ),
+                    value: "recent",
+                  },
+                  {
+                    label: (
+                      <Center>
+                        <FontAwesomeIcon icon={faArrowUpLong} size="l" />
+                        <Box ml={10}>Top Rated</Box>
+                      </Center>
+                    ),
+                    value: "top",
+                  },
+                ]}
+                size="xl"
+              />
+              <TextInput
+                placeholder="Search Keywords"
+                icon={<FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />}
+                size="xl"
+                className="newsKeywords"
+              />
+            </div>
+            <div>
+              <SimpleGrid cols={3} spacing="md" className="newsGrid">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+              </SimpleGrid>
+            </div>
+            <div className="newsPagination">
+              <Center>
+                <Pagination total={10} size="xl" />
+              </Center>
             </div>
           </div>
-        </div>
-        <div className="newsBox">
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 1</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 2</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 3</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 4</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 5</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 6</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 7</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 8</div>
-            </div>
-          </div>
-          <div className="articleHover">
-            <div className="middle">
-              <div class="text">Article 9</div>
-            </div>
-          </div>
-        </div>
-        <div className="pageBar">
-          <h1></h1>
+          {/* <div className="newsArticleComments">ssss</div> */}
         </div>
       </div>
     </>

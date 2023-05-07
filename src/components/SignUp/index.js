@@ -1,13 +1,13 @@
 import "./index.scss";
-import LogoTitle from "../../assets/images/logo-o.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { PasswordInput, TextInput, Checkbox, Button } from "@mantine/core";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setconfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
 
@@ -47,62 +47,44 @@ const SignUp = () => {
     <>
       <div className="signUpContainer">
         <div className="signUpForm">
-          <h2 className="signUpText">Sign Up</h2>
-          <div className="signUpBox">
-            <label style={{ fontSize: 15 }}>Email</label>
-            <br />
-            <input
-              type="email"
-              className="emailBox"
-              onChange={(email) => setEmail(email.target.value)}
-            ></input>
-            <br />
-            <label style={{ fontSize: 15 }}>Username</label>
-            <br />
-            <input
-              type="text"
-              className="emailBox"
-              onChange={(username) => setUsername(username.target.value)}
-            ></input>
-            <br />
-            <label style={{ fontSize: 15 }}>First Name</label>
-            <br />
-            <input
-              type="text"
-              className="emailBox"
-              onChange={(firstName) => setFirstName(firstName.target.value)}
-            ></input>
-            <br />
-            <label style={{ fontSize: 15 }}>Password</label>
-            <br />
-            <input
-              type="password"
-              className="passwordBox"
-              onChange={(password) => setPassword(password.target.value)}
-            ></input>
-            <br />
-            <label style={{ fontSize: 15 }}>Confirm Password</label>
-            <br />
-            <input
-              type="password"
-              className="passwordBox"
-              onChange={(confirmPassword) =>
-                setconfirmPassword(confirmPassword.target.value)
-              }
-            ></input>
-            <br />
-            <input
-              className="signUpButton"
-              type="button"
-              value="Create Account"
-              onClick={() => handleSignUp()}
-            ></input>
-            <p className="loginText" style={{ fontSize: 15 }}>
-              Already have an account?{" "}
-              <Link style={{ fontSize: 15 }} to="/Login">
-                Login
-              </Link>
-            </p>
+          <div className="signUpText">Sign Up</div>
+          <TextInput
+            placeholder="Email"
+            label="Email"
+            size="xl"
+            value={email}
+            withAsterisk
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
+          <TextInput
+            placeholder="Username"
+            label="Username"
+            size="xl"
+            value={username}
+            withAsterisk
+            onChange={(event) => setUsername(event.currentTarget.value)}
+          />
+          <PasswordInput
+            placeholder="Password"
+            label="Password"
+            size="xl"
+            value={password}
+            withAsterisk
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+          <PasswordInput
+            placeholder="Confirm Password"
+            label="Confirm Password"
+            size="xl"
+            value={confirmPassword}
+            withAsterisk
+            onChange={(event) => setConfirmPassword(event.currentTarget.value)}
+          />
+          <Button color="gray" radius="xl" size="xl" onClick={handleSignUp}>
+            Sign Up
+          </Button>
+          <div className="signUpLogin">
+            Already have an account? <Link to="/login">Log In</Link>.
           </div>
         </div>
       </div>

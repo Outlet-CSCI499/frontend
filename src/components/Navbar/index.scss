@@ -1,0 +1,49 @@
+.navbar {
+  background-color: #d9d9d9;
+  height: 5em;
+  padding: 20px 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .navLinks {
+    display: flex;
+    gap: 3em;
+    font-weight: bold;
+
+    a {
+      color: #4f4f4f;
+      text-decoration: none;
+      display: grid;
+      place-items: center;
+      gap: 0.25em;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  img {
+    height: 4em;
+  }
+
+  .userProfile {
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    height: 40px;
+    width: 40px;
+    background-color: #4f4f4f;
+  }
+
+  .logout {
+    text-decoration: none;
+    color: #f43131;
+  }
+}
+
+.active {
+  color: #ffffff !important;
+}

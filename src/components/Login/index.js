@@ -1,16 +1,13 @@
 import "./index.scss";
-import LogoTitle from "../../assets/images/logo-o.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { PasswordInput, TextInput, Checkbox, Button } from "@mantine/core";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
-  const checkBoxHandler = (box) => {
-    setRememberMe(box.target.checked);
-  };
 
   const handleLogin = async () => {
     const login = await fetch("http://localhost:3001/auth/login", {
@@ -42,47 +39,33 @@ const Login = () => {
     <>
       <div className="loginContainer">
         <div className="loginForm">
-          <h2 className="loginText">Login</h2>
-          <div className="loginBox">
-            <label style={{ fontSize: 15 }}>Email</label>
-            <br />
-            <input
-              type="email"
-              className="emailBox"
-              value={email}
-              onChange={(email) => setEmail(email.target.value)}
-            ></input>
-            <br />
-            <label style={{ fontSize: 15 }}>Password</label>
-            <br />
-            <input
-              type="password"
-              className="passwordBox"
-              onChange={(password) => setPassword(password.target.value)}
-            ></input>
-            <br />
-            <input
-              className="rememberMe"
-              type="checkbox"
-              id="rememberMe"
-              onChange={checkBoxHandler}
-            ></input>
-            <label style={{ fontSize: 15 }} for="rememberMe">
-              Remember Me
-            </label>
-            <br />
-            <input
-              className="signInButton"
-              type="button"
-              value="Sign in"
-              onClick={() => handleLogin()}
-            ></input>
-            <p className="signUpText" style={{ fontSize: 15 }}>
-              Don't have an account?{" "}
-              <Link style={{ fontSize: 15 }} to="/SignUp">
-                Sign Up
-              </Link>
-            </p>
+          <div className="loginText">Log In</div>
+          <TextInput
+            placeholder="Email"
+            label="Email"
+            size="xl"
+            value={email}
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
+          <PasswordInput
+            placeholder="Password"
+            label="Password"
+            size="xl"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+          <Checkbox
+            label="Remember Me"
+            color="gray"
+            checked={rememberMe}
+            onChange={(event) => setRememberMe(event.currentTarget.checked)}
+            size="xl"
+          />
+          <Button color="gray" radius="xl" size="xl" onClick={handleLogin}>
+            Log In
+          </Button>
+          <div className="loginSignUp">
+            Don't have an account? <Link to="/signup">Sign Up</Link>.
           </div>
         </div>
       </div>

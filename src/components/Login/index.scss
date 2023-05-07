@@ -1,52 +1,28 @@
-.dddd {
-  background-color: #e8e8e8;
-  height: 40rem;
-  width: 50rem;
-}
-
 .loginContainer {
   display: grid;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-}
+  place-items: center;
+  height: 100%;
 
-.loginForm {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  background-color: #e8e8e8;
-  width: 40rem;
-  border-radius: 40px;
-  color: black;
-  padding-bottom: 20px;
-}
+  .loginForm {
+    width: 35em;
+    display: grid;
+    gap: 2em;
+    background-color: #25262b;
+    padding: 2em;
+    border-radius: 1em;
 
-.loginText {
-  text-align: center;
-}
+    .loginText {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+    }
 
-.signInButton {
-  margin-top: 20px;
-  display: grid;
-  align-items: center;
-  background-color: #a2e4b8;
-  border-radius: 20px;
-  border: none;
-  padding: 10px;
-  width: 100%;
-}
-
-.passwordBox,
-.emailBox {
-  width: 230px;
-  border-radius: 20px;
-  padding: 10px;
-  background-color: #aeaeae;
-  border: none;
-}
-
-.rememberMe {
-  border: none;
+    .loginSignUp {
+      font-size: 1.2em;
+      a {
+        color: #1c7ed6;
+        text-decoration: none;
+      }
+    }
+  }
 }
