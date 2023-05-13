@@ -34,11 +34,13 @@
 
       .newsGrid {
         margin: 1.25em 0;
+        max-width: 100em;
 
-        div {
+        .newsGridTile {
           background-color: #25262b;
           height: 18em;
           border-radius: 0.5em;
+          overflow: hidden;
         }
       }
 
@@ -51,4 +53,8 @@
       }
     }
   }
+}
+
+.mantine-BackgroundImage-root {
+  height: 100%;
 }
