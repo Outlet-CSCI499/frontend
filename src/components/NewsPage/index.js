@@ -36,13 +36,13 @@ const NewsPage = () => {
   useEffect(() => {
     //console.log(filter);
     if (filter === "recent") {
-      fetch("http://localhost:3000/newsExample.json")
+      fetch("http://localhost:3000/newsExample2.json")
         .then((res) => res.json())
         .then((res) => {
           setNews(res.articles);
         });
     } else {
-      fetch("http://localhost:3000/newsExample.json")
+      fetch("http://localhost:3000/newsExample2.json")
         .then((res) => res.json())
         .then((res) => {
           setNews(
