@@ -2,36 +2,20 @@ import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PasswordInput, TextInput, Checkbox, Button } from "@mantine/core";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+  const { Login } = useAuth();
 
   const handleLogin = async () => {
-    const login = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        return data;
-      });
-
-    console.log(login);
-
-    if (login.hasOwnProperty("user")) {
-      console.log("success");
-      navigate("/posts");
+    if (!email || !password) {
+      alert("Fill in all required fields.");
     } else {
-      console.log("failed");
+      Login(email, password);
     }
   };
 

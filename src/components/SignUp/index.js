@@ -2,6 +2,7 @@ import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PasswordInput, TextInput, Checkbox, Button } from "@mantine/core";
+import { useAuth } from "../../contexts/AuthContext";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -10,36 +11,15 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
+  const { SignUp } = useAuth();
 
   const handleSignUp = async () => {
-    if (password !== confirmPassword) {
+    if (!email || !password || !confirmPassword || !username || !firstName) {
+      alert("Fill in all required fields.");
+    } else if (password !== confirmPassword) {
       alert("Passwords do not match");
     } else if (password === confirmPassword) {
-      const signup = await fetch("http://localhost:3001/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          username: username,
-          first_name: firstName,
-          password: password,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          return data;
-        });
-
-      console.log(signup);
-
-      if (signup.hasOwnProperty("user")) {
-        console.log("success");
-        navigate("/login");
-      } else {
-        console.log("failed");
-      }
+      SignUp(email, password, username, firstName);
     }
   };
 

@@ -9,10 +9,15 @@ import {
   faUser,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { currentUser, Logout } = useAuth();
+  const [isLoggedIn, setIsLoggedIn] = useState(currentUser);
+
+  useEffect(() => {
+    setIsLoggedIn(currentUser);
+  }, [currentUser]);
 
   return (
     <div className="navbar">
@@ -57,10 +62,9 @@ const Navbar = () => {
                 icon={
                   <FontAwesomeIcon icon={faArrowRightFromBracket} size="xl" />
                 }
+                onClick={Logout}
               >
-                <Link to="/logout" className="logout">
-                  Logout
-                </Link>
+                <div className="logout">Logout</div>
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
