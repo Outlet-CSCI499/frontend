@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
       setCurrentUser(login); // set Current user
       setCookie("auth", login);
       console.log(currentUser);
-      navigate("/NewsPage");
+      navigate("/news");
     } else {
       console.log("failed");
     }

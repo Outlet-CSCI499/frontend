@@ -8,6 +8,7 @@ import {
   faNewspaper,
   faUser,
   faArrowRightFromBracket,
+  faFeatherPointed,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
@@ -32,7 +33,11 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faHome} size="2xl" />
               Home
             </NavLink>
-            <NavLink exact="true" activeclassname="active" to="/NewsPage">
+            <NavLink exact="true" activeclassname="active" to="/posts">
+              <FontAwesomeIcon icon={faFeatherPointed} size="2xl" />
+              Posts
+            </NavLink>
+            <NavLink exact="true" activeclassname="active" to="/news">
               <FontAwesomeIcon icon={faNewspaper} size="2xl" />
               News
             </NavLink>
