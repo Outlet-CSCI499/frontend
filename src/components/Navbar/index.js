@@ -48,6 +48,11 @@ const Navbar = () => {
       <div>
         {!isLoggedIn ? (
           <>
+            <Link to="/posts">
+              <Button color="blue" radius="xl" size="xl">
+                Posts
+              </Button>
+            </Link>
             <Link to="/login">
               <Button color="gray" radius="xl" size="xl">
                 Log In
