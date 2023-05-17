@@ -146,7 +146,7 @@ const Post = () => {
 
   const deletePost = async () => {
     postClose();
-    await fetch(`http://localhost:3001/posts/${selectedPost.authorid}`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.id}`, {
       method: "DELETE",
     });
 
