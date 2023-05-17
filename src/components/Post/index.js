@@ -131,6 +131,7 @@ const Post = () => {
   const openPost = (id, authorid, title, time, body, votes) => {
     setSelectedPost({ id, authorid, title, time, body, votes });
     postOpen();
+    getReplies();
   };
 
   const getPosts = async () => {
@@ -159,13 +160,13 @@ const Post = () => {
   };
 
   const getReplies = async () => {
-    const allReplies = await fetch(`http://localhost:3001/replies/posts/${selectedPost.id}`, {
+    const allReplies = await fetch(`http://localhost:3001/replies/posts/${selectedPost.authorid}`, {
     method: "GET",
     }).then((res) => res.json());
 
-    console.log(Array.from(allReplies.allreplies));
+    console.log(Array.from(allReplies.replies));
 
-    setReplies(allReplies.allreplies);
+    setReplies(allReplies.replies);
   }
 
   const submitReply = async () => {
@@ -229,7 +230,7 @@ const Post = () => {
 
   useEffect(() => {
     getPosts();
-    getReplies();
+    
   }, []);
 
   return (
