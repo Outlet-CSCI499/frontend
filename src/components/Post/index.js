@@ -92,6 +92,7 @@ const Post = () => {
     useDisclosure(false);
 
   const [posts, setPosts] = useState([]);
+  const [replies, setReplies] = useState([]);
 
   const [createPostTitle, setCreatePostTitle] = useState("");
   const [createPostBody, setCreatePostBody] = useState("");
@@ -160,6 +161,10 @@ const Post = () => {
     const allReplies = await fetch(`http://localhost:3001/posts/${selectedPost.id}/replies`, {
     method: "GET",
     }).then((res) => res.json());
+
+    console.log(Array.from(allReplies.allreplies));
+
+    setReplies(allReplies.allreplies);
   }
 
   const submitReply = async () => {
@@ -223,6 +228,7 @@ const Post = () => {
 
   useEffect(() => {
     getPosts();
+    getReplies();
   }, []);
 
   return (
@@ -444,7 +450,11 @@ const Post = () => {
           </div>
         </div>
         <br></br>
-        <Paper withBorder>Comment goes here</Paper>
+        <div className="replySection">
+          
+          <Paper withBorder>Comment goes here</Paper>
+        </div>
+        
       </Modal>
     </>
   );
