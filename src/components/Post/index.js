@@ -32,7 +32,7 @@ const Vote = ({ postId, votes, getPostsNew }) => {
   const handlers = useRef();
 
   const upvote = async () => {
-    await fetch(`http://localhost:3001/posts/posts/${postId}/upvote`, {
+    await fetch(`http://localhost:3001/posts/${postId}/upvote`, {
       method: "POST",
     });
 
@@ -40,7 +40,7 @@ const Vote = ({ postId, votes, getPostsNew }) => {
   };
 
   const downvote = async () => {
-    await fetch(`http://localhost:3001/posts/posts/${postId}/downvote`, {
+    await fetch(`http://localhost:3001/posts/${postId}/downvote`, {
       method: "POST",
     });
 
@@ -110,7 +110,7 @@ const Post = () => {
   const submitPost = async () => {
     createClose();
     console.log(createPostTitle, createPostBody, currentUser.user.id);
-    await fetch("http://localhost:3001/posts/posts", {
+    await fetch("http://localhost:3001/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -132,7 +132,7 @@ const Post = () => {
   };
 
   const getPosts = async () => {
-    const allPosts = await fetch("http://localhost:3001/posts/posts", {
+    const allPosts = await fetch("http://localhost:3001/posts", {
       method: "GET",
     }).then((res) => res.json());
 
@@ -143,7 +143,7 @@ const Post = () => {
 
   const deletePost = async () => {
     postClose();
-    await fetch(`http://localhost:3001/posts/posts/${selectedPost.authorid}`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.authorid}`, {
       method: "DELETE",
     });
 
@@ -151,19 +151,19 @@ const Post = () => {
   };
 
   const editPost = async () => {
-    await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.id}`, {
       method: "POST",
     });
   };
 
   const getReplies = async () => {
-    const allReplies = await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+    const allReplies = await fetch(`http://localhost:3001/posts/${selectedPost.id}/replies`, {
     method: "GET",
     }).then((res) => res.json());
   }
 
   const submitReply = async () => {
-    await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.id}/replies`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -181,7 +181,7 @@ const Post = () => {
 
   const deleteReply = async () => {
     postClose();
-    await fetch(`http://localhost:3001/posts/posts/${selectedPost.authorid}/replies`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.authorid}/replies`, {
       method: "DELETE",
     });
 
@@ -189,7 +189,7 @@ const Post = () => {
   };
 
   const editReply = async () => {
-    await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+    await fetch(`http://localhost:3001/posts/${selectedPost.id}/replies`, {
       method: "POST",
     });
   };
