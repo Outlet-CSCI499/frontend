@@ -14,7 +14,7 @@ const SignUp = () => {
   const { SignUp } = useAuth();
 
   const handleSignUp = async () => {
-    if (!email || !password || !confirmPassword || !username || !firstName) {
+    if (!email || !password || !confirmPassword || !username) {
       alert("Fill in all required fields.");
     } else if (password !== confirmPassword) {
       alert("Passwords do not match");
