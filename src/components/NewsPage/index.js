@@ -195,7 +195,7 @@ const NewsPage = () => {
           <img src={selectedArticle.media} width="500px"></img>
         </Center>
         <br />
-        <Center>
+        <Center className="articleSummary">
           <Text fz="15px">{selectedArticle.summary}</Text>
         </Center>
         <br />

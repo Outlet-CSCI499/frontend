@@ -3,52 +3,56 @@ import "./index.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Modal from 'react-modal';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Modal from "react-modal";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({
-    title: '',
-    body: '',
+    title: "",
+    body: "",
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/posts')
-      .then(res => setPosts(res.data.allposts))
-      .catch(err => console.log(err));
+    axios
+      .get("http://localhost:3000/posts")
+      .then((res) => setPosts(res.data.allposts))
+      .catch((err) => console.log(err));
   }, []);
 
   const deletePost = (id) => {
-    axios.delete(`http://localhost:3000/posts/${id}`)
-      .then(() => setPosts(posts.filter(post => post._id !== id)))
-      .catch(err => console.log(err));
+    axios
+      .delete(`http://localhost:3000/posts/${id}`)
+      .then(() => setPosts(posts.filter((post) => post._id !== id)))
+      .catch((err) => console.log(err));
   };
 
   const editPost = (id) => {
     const updatedPosts = [...posts];
-    const index = updatedPosts.findIndex(post => post._id === id);
-    updatedPosts[index].title = 'New Title';
-    updatedPosts[index].body = 'New Body';
-    axios.patch(`http://localhost:3000/posts/${id}`, updatedPosts[index])
+    const index = updatedPosts.findIndex((post) => post._id === id);
+    updatedPosts[index].title = "New Title";
+    updatedPosts[index].body = "New Body";
+    axios
+      .patch(`http://localhost:3000/posts/${id}`, updatedPosts[index])
       .then(() => setPosts(updatedPosts))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const addPost = () => {
-    axios.post('http://localhost:3000/posts', newPost)
-      .then(res => {
+    axios
+      .post("http://localhost:3000/posts", newPost)
+      .then((res) => {
         setPosts([...posts, res.data.post]);
         setModalIsOpen(false);
         setNewPost({
-          title: '',
-          body: '',
-          authorId: '',
+          title: "",
+          body: "",
+          authorId: "",
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (event) => {
@@ -58,18 +62,24 @@ const App = () => {
   return (
     <div>
       <h1>Take a look at the most recent posts:</h1>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <h2>Add your own post! </h2>
-      <FontAwesomeIcon
-            icon={faPenToSquare}
-            className="newPost"
-            color="#ffffff"
-            size="4x"
-            onClick={() => setModalIsOpen(true)}
-          />
+        <FontAwesomeIcon
+          icon={faPenToSquare}
+          className="newPost"
+          color="#ffffff"
+          size="4x"
+          onClick={() => setModalIsOpen(true)}
+        />
       </div>
-      
-      {posts.map(post => (
+
+      {posts.map((post) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
@@ -83,7 +93,12 @@ const App = () => {
         <form>
           <label>Title:</label>
           <br></br>
-          <input type="text" name="title" value={newPost.title} onChange={handleChange} />
+          <input
+            type="text"
+            name="title"
+            value={newPost.title}
+            onChange={handleChange}
+          />
           <br></br>
           <label>Body:</label>
           <br></br>
@@ -96,9 +111,6 @@ const App = () => {
 };
 
 export default App;
-
-
-
 
 // const Posts = () => {
 //   const navigate = useNavigate();

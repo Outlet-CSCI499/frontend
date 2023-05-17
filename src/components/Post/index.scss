@@ -1,0 +1,91 @@
+.postContainer {
+  display: grid;
+  place-items: center;
+  height: 100%;
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    padding-bottom: 2em;
+  }
+
+  .postSearch {
+    width: 90em;
+  }
+
+  .postOptions {
+    display: flex;
+    gap: 4em;
+  }
+
+  .post {
+    width: 100em;
+    cursor: pointer;
+  }
+
+  .postInfo {
+    display: flex;
+    font-size: 2em;
+    gap: 2em;
+    padding-bottom: 1em;
+  }
+
+  .postTitle {
+    font-weight: bold;
+  }
+
+  .postTime,
+  .postAuthor {
+    opacity: 0.8;
+  }
+
+  .postContent {
+    font-size: 1.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .userPosts {
+    display: grid;
+    grid-gap: 1em;
+  }
+}
+
+.modalPostInfo {
+  display: flex;
+  font-size: 1.25em;
+  gap: 1em;
+  opacity: 0.8;
+  align-items: center;
+}
+
+.modalPostTitle {
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.modalPostBody {
+  font-size: 1.5em;
+}
+
+.postButtons,
+.commentButton {
+  justify-content: right;
+  display: flex;
+  gap: 2em;
+}
+
+.authorButtons {
+  font-size: 1.25em;
+  display: flex;
+  gap: 1em;
+
+  div {
+    cursor: pointer;
+
+    &:nth-child(1) {
+      color: red;
+    }
+  }
+}
