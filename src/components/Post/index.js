@@ -2,6 +2,7 @@ import "./index.scss";
 import { useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDisclosure, useDebouncedValue } from "@mantine/hooks";
+import { Grid } from '@mantine/core';
 import {
   SegmentedControl,
   TextInput,
@@ -451,8 +452,20 @@ const Post = () => {
         </div>
         <br></br>
         <div className="replySection">
-          
-          <Paper withBorder>Comment goes here</Paper>
+        <Grid gutter="md">
+        {replies.map((reply) => (
+          <Grid.Col span={12} key={reply.id}>
+            <Paper shadow="sm" padding="md" radius="md">
+              <div className="replyInfo">
+                <Text className="replyAuthor">by anonymous user {reply.authorId}</Text>
+                <Text className="replyTime">{timeSince(new Date(reply.created))} ago</Text>
+              </div>
+              <Text className="replyContent">{reply.body}</Text>
+            </Paper>
+          </Grid.Col>
+        ))}
+        </Grid>
+          {/* <Paper withBorder>Comment goes here</Paper> */}
         </div>
         
       </Modal>
