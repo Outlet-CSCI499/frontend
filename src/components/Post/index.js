@@ -156,6 +156,44 @@ const Post = () => {
     });
   };
 
+  const getReplies = async () => {
+    const allReplies = await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+    method: "GET",
+    }).then((res) => res.json());
+  }
+
+  const submitReply = async () => {
+    await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: createPostTitle,
+        body: createPostBody,
+        authorId: currentUser.user.id,
+      }),
+    });
+    setCreatePostTitle("");
+    setCreatePostBody("");
+    getPosts();
+  }
+
+  const deleteReply = async () => {
+    postClose();
+    await fetch(`http://localhost:3001/posts/posts/${selectedPost.authorid}/replies`, {
+      method: "DELETE",
+    });
+
+    getPosts();
+  };
+
+  const editReply = async () => {
+    await fetch(`http://localhost:3001/posts/posts/${selectedPost.id}/replies`, {
+      method: "POST",
+    });
+  };
+
   const timeSince = (date) => {
     var seconds = Math.floor((new Date() - date) / 1000);
 
@@ -400,7 +438,7 @@ const Post = () => {
           />
           <br></br>
           <div className="commentButton">
-            <Button size="xl" color="gray">
+            <Button size="xl" color="gray" onClick={() => submitReply()}>
               Post
             </Button>
           </div>
